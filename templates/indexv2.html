@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Text to speech demo</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{{url_for('static', filename='images/icons/favi.ico')}}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href=" {{url_for('static', filename='vendor/animate/animate.css')}}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href=" {{url_for('static', filename='vendor/css-hamburgers/hamburgers.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href=" {{url_for('static', filename='vendor/select2/select2.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href=" {{url_for('static', filename='css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href=" {{url_for('static', filename='css/main.css')}}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+
+			<div class="wrap-login100">
+					<div class="row row-cols-1 row-cols-sm-2 g-3">
+					  <div class="col">
+						<div class="card border-0 ">
+
+						  <div class="card-body">
+							<div class="login100-pics js-tilt" data-tilt>
+					<img src="static/images/tts.png" alt="IMG">
+				</div>
+						  </div>
+						</div>
+					  </div>
+						 </div>
+				<span class="login100-form-title">
+						Text to Speech
+					</span>
+				<div class="row row-cols-1 row-cols-sm-2 g-3">
+					  <div class="col">
+						<div class="card border-0 ">
+
+						  <div class="card-body">
+
+							<div class="wrap-input100 validate-input">
+
+						<input id="text"  class="searchbar" placeholder="Type your text here..." size=45 type="text" name="text" style="border-radius:25px; text-align:center">
+
+						<span class="focus-input100"></span>
+
+					</div>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				<div class="row row-cols-1 row-cols-sm-2 g-3">
+					  <div class="col">
+						<div class="card border-0 card1 ">
+
+						  <div class="card-body">
+							<button id="speak-button" class="form-btn" name="speak" >Speaker-1</button>
+						  </div>
+						</div>
+					  </div>
+					  <div class="col">
+						<div class="card border-0 card2">
+						  <div class="card-body">
+							<audio id="audio" controls autoplay hidden></audio>
+							   <p id="messages"></p>
+						  </div>
+						</div>
+					  </div>
+
+					</div>
+				<div class="row row-cols-1 row-cols-sm-2 g-3">
+					  <div class="col">
+						<div class="card border-0">
+
+						  <div class="card-body">
+							<button id="speak-buttontwo" class="form-btn2" name="speaktwo">Speaker-2</button>
+						  </div>
+						</div>
+					  </div>
+					  <div class="col">
+						<div class="card border-0">
+						  <div class="card-body">
+							<audio id="vaudio" controls autoplay hidden></audio>
+						 <p id="message"></p>
+						  </div>
+						</div>
+					  </div>
+
+					</div>
+                				<div class="row row-cols-1 row-cols-sm-2 g-3">
+					  <div class="col">
+						<div class="card border-0">
+
+						  <div class="card-body">
+							<button id="speak-buttontwo" class="form-btn2" name="speaktwo">Speaker-2</button>
+						  </div>
+						</div>
+					  </div>
+					  <div class="col">
+						<div class="card border-0">
+						  <div class="card-body">
+							<audio id="vaudio" controls autoplay hidden></audio>
+						 <p id="message"></p>
+						  </div>
+						</div>
+					  </div>
+
+					</div>
+
+
+           <div class="col-md-12 col-sm-12">
+				<p class="font-weight-normal" style="color:black;">Speaker-1 is trained with Tacotron2 DDC and Pretrained melGAN vocoder (3000 epochs)</p>
+		        <p class="font-weight-normal" style="color:black;">Speaker-2 is trained with Tacotron2 DDC and melGAN vocoder (500 epochs)</p>
+			</div>
+			</div>
+
+
+		</div>
+
+
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/bootstrap/js/popper.js"></script>
+	<script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.2
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="static/js/main.js"></script>
+
+</body>
+</html>
