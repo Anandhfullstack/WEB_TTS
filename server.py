@@ -4,7 +4,7 @@ import io
 from flask import Flask, render_template, request, send_file
 # from gevent.pywsgi import WSGIServer
 from TTS.utils.synthesizer import Synthesizer
-from TTS.waveglow.synthesizer_waveglow import Synthesizer as WGSynthesizer
+from synthesizer_waveglow import Synthesizer as WGSynthesizer
 
 #
 #     parser = argparse.ArgumentParser()
@@ -118,7 +118,7 @@ def vocoder():
 
 
 @app.route('/api/wgvocoder', methods=['GET'])
-def vocoder():
+def wavvocoder():
     text = request.args.get('text')
     print(" > Model input: {}".format(text))
     wavs = synth.tts(text)
