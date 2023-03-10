@@ -104,6 +104,30 @@
         });
     }
 
+      function waveglowsynth(text) {
+        $.ajax({
+            url: '/api/wgvocoder',
+            type: 'GET',
+            data: { text: text },
+            cache: false,
+            xhr: function () {
+                var xhr = new window.XMLHttpRequest();
+                xhr.responseType = 'blob';
+                return xhr;
+            },
+            success: function(blob) {
+                $('#message3').text('');
+                $('#speak-buttonthree').prop('disabled', false);
+                $('#vaudios').attr('src', URL.createObjectURL(blob));
+                $('#vaudios').prop('hidden', false);
+            },
+            error: function(xhr, status, error) {
+                $('#message3').text('Error: ' + error);
+                $('#speak-buttonthree').prop('disabled', false);
+            }
+        });
+    }
+
     $('#text').on('keyup', function(e) {
         if (e.keyCode === 13) { // enter
             do_tts(e);
@@ -130,6 +154,19 @@
             $('#speak-buttontwo').prop('disabled', true);
             $('#vaudio').prop('hidden', true);
             synth(text);
+        }
+        e.preventDefault();
+        return false;
+    });
+
+        $('#speak-buttonthree').on('click', function(e) {
+        var text = $('#text').val();
+        if (text) {
+            $('#message3').text('Synthesizing...');
+
+            $('#speak-buttonthree').prop('disabled', true);
+            $('#vaudios').prop('hidden', true);
+            waveglowsynth(text);
         }
         e.preventDefault();
         return false;

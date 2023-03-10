@@ -69,11 +69,11 @@ tts_checkpoint = 'models/TTS_model.pth.tar'
 tts_config = 'models/config.json'
 vocoder_checkpoint= 'models/checkpoint_1450000.pth.tar'
 vocoder_config = 'models/v_config.json'
-# my_vocoder_checkpoint= 'models/myvocoder.pth.tar'
-my_vocoder_checkpoint= 'models/waveglow_250000'
-
+my_vocoder_melgan= 'models/myvocoder.pth.tar'
+my_vocoder_checkpoint= 'models/waveglow_620000'
 my_vocoder_config = 'models/myv_config.json'
 synthesizer = Synthesizer(tts_checkpoint, tts_config, vocoder_checkpoint, vocoder_config, False, False)
+synthesizers = Synthesizer(tts_checkpoint, tts_config, my_vocoder_melgan, vocoder_config, False, False)
 synth = WGSynthesizer(tts_checkpoint, tts_config, my_vocoder_checkpoint, my_vocoder_config, False, True)
 
 app = Flask(__name__)
@@ -111,12 +111,13 @@ def tts():
 def vocoder():
     text = request.args.get('text')
     print(" > Model input: {}".format(text))
-    wavs = synth.tts(text)
+    wavs = synthesizers.tts(text)
     out = io.BytesIO()
-    synth.save_wav(wavs, out)
+    synthesizers.save_wav(wavs, out)
     return send_file(out, mimetype='audio/wav')
 
 
+# This will load WAVEGLOW VOCODER
 @app.route('/api/wgvocoder', methods=['GET'])
 def wavvocoder():
     text = request.args.get('text')
