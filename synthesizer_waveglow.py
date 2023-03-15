@@ -170,13 +170,16 @@ class Synthesizer(object):
                 waveform = waveform.cpu()
             if not use_gl:
                 waveform = waveform.numpy()
-            waveform = waveform.squeeze()
+            if self.waveglow:
+                waveform = waveform.squeeze()
+                # trim silence
+                waveform = trim_silence(waveform, self.ap)
+                wavs += list(waveform)
+                wavs += [0] * 10000
 
-            # trim silence
-            waveform = trim_silence(waveform, self.ap)
 
-            wavs += list(waveform)
-            wavs += [0] * 10000
+
+
 
         # compute stats
         process_time = time.time() - start_time
