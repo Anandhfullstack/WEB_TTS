@@ -18,7 +18,7 @@ Prerequisites :
 
 If you have pretrained model of both TTS and Waveglow model, you can use this UI system.
 
-1. Just place your model in the folder of models 
+1. Just place your model in the folder of models (TTS model, Waveglow)
 
 
 
